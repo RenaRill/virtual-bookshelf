@@ -4,20 +4,17 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "shelfs")
+@Table(name = "shelf_books")
 @Data
-public class Shelf {
+public class ShelfBook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private Long userId;
+    private Long shelfId;
 
     @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false)
-    private Boolean isPublic;
+    private Long bookId;
 }
 

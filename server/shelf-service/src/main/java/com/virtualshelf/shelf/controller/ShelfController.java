@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/shelfs")
 @RequiredArgsConstructor
 public class ShelfController {
+
     private final ShelfService shelfService;
 
     @PostMapping
-    public ResponseEntity<Shelf> addShelf(@RequestBody Shelf shelf) {
+    public ResponseEntity<Shelf> addShelf(@RequestBody Shelf shelf,
+                                          @RequestHeader("X-User-Id") Long userId) {
+        shelf.setUserId(userId);
         Shelf savedShelf = shelfService.addShelf(shelf);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedShelf);
     }
@@ -26,15 +29,20 @@ public class ShelfController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Shelf> updateShelf(@PathVariable Long id, @RequestBody Shelf updatedShelf) {
-        Shelf shelf = shelfService.updateShelf(id, updatedShelf);
+    public ResponseEntity<Shelf> updateShelf(@PathVariable Long id,
+                                             @RequestBody Shelf updatedShelf,
+                                             @RequestHeader("X-User-Id") Long userId) {
+        Shelf shelf = shelfService.updateShelf(id, updatedShelf, userId);
         return ResponseEntity.ok(shelf);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteShelf(@PathVariable Long id) {
-        shelfService.deleteShelf(id);
+    public ResponseEntity<Void> deleteShelf(@PathVariable Long id,
+                                            @RequestHeader("X-User-Id") Long userId) {
+        shelfService.deleteShelf(id, userId);
         return ResponseEntity.noContent().build();
     }
 }
+
+
 
