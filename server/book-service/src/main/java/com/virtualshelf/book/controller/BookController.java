@@ -7,11 +7,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/books")
 @RequiredArgsConstructor
 public class BookController {
     private final BookService bookService;
+
+    @GetMapping
+    public ResponseEntity<List<Book>> getAllBooks() {
+        List<Book> books = bookService.getAllBooks();
+        return ResponseEntity.ok(books);
+    }
 
     @PostMapping
     public ResponseEntity<Book> addBook(@RequestBody Book book) {
