@@ -1,0 +1,113 @@
+.book-card {
+  position: relative;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  transition: transform 0.2s ease;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.book-card:hover {
+  transform: scale(1.02);
+}
+
+.book-cover {
+  height: 450px;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.no-cover {
+  height: 320px;
+  width: 100%;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+.book-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0.6rem;
+  background-color: rgba(248, 246, 240, 0.95);
+  color: #000000;
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+.book-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4b3f72;
+  margin: 0;
+}
+
+.book-author {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.book-card:hover .overlay {
+  opacity: 1;
+}
+
+.book-card:hover .book-info {
+  opacity: 0;
+}
+
+.pastel-btn,
+.shelf-btn {
+  background-color: #4b3f72;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pastel-btn:hover,
+.shelf-btn:hover {
+  background-color: #3b2f63;
+  transform: scale(1.03);
+}
+
+.pagination .page-link {
+  color: #4b3f72;
+  border-color: #4b3f72;
+}
+
+.pagination .page-link:hover {
+  background-color: #4b3f72;
+  color: white;
+  border-color: #4b3f72;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #4b3f72;
+  border-color: #4b3f72;
+  color: white;
+}

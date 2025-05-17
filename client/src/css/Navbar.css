@@ -1,0 +1,47 @@
+.custom-navbar {
+  background-color: #f8f6f0 !important;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-brand-custom {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4b3f72 !important;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand-custom:hover {
+  color: #a3d2ca !important;
+}
+
+.nav-link-custom {
+  color: #4b3f72 !important;
+  font-weight: 500;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link-custom:hover {
+  background-color: #e3dffd;
+  color: #4b3f72 !important;
+}
+
+.logout-button {
+  background-color: #857399 !important;
+  color: #fff !important;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #ffe5ec !important;
+  color: #4b3f72 !important;
+}
+

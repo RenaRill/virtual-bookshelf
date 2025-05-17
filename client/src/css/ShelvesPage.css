@@ -1,0 +1,101 @@
+.shelf-card {
+  position: relative;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  background-color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.shelf-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.shelf-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4b3f72;
+  margin-bottom: 0.5rem;
+}
+
+.shelf-card-icons {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.icon-btn {
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.icon-btn:hover {
+  color: #4b3f72;
+  transform: scale(1.2);
+}
+
+.custom-badge {
+  background-color: #b7d8b7 !important;
+  color: #3a6b3a !important;
+  border-radius: 20px !important;
+  padding: 0.4em 0.8em !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  margin-top: 0.5rem !important;
+  display: inline-block;
+}
+
+.shelf-btn {
+  background-color: #4b3f72;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.shelf-btn:hover {
+  background-color: #3b2f63;
+  transform: scale(1.03);
+}
+
+.remove-btn {
+  background-color: #ffffff;
+  color: #d47b83;
+  border: 1.5px solid #f2b6bc;
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: none;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.remove-btn:hover {
+  background-color: #fdf1f2;
+  color: #b85e65;
+  border-color: #ebb0b7;
+  transform: scale(1.02);
+}
+
+.list-group-item .remove-btn {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.list-group-item:hover .remove-btn {
+  opacity: 1;
+  pointer-events: auto;
+}

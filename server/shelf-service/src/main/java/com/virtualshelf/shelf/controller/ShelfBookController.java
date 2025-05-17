@@ -30,8 +30,9 @@ public class ShelfBookController {
 
     @DeleteMapping("/{shelfId}/books/{bookId}")
     public ResponseEntity<Void> removeBookFromShelf(@PathVariable Long shelfId,
-                                                    @PathVariable Long bookId) {
-        shelfBookService.removeBookFromShelf(shelfId, bookId);
+                                                    @PathVariable Long bookId,
+                                                    @RequestHeader("X-User-Id") Long userId) {
+        shelfBookService.removeBookFromShelf(shelfId, bookId, userId);
         return ResponseEntity.noContent().build();
     }
 }

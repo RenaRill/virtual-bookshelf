@@ -6,6 +6,7 @@ import com.virtualshelf.shelf.exception.ForbiddenException;
 import com.virtualshelf.shelf.repository.ShelfBookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,10 +18,7 @@ public class ShelfBookService {
     private final ShelfService shelfService;
 
     public ShelfBook addBookToShelf(Long shelfId, Long bookId, Long userId) {
-        Shelf shelf = shelfService.getShelfById(shelfId);
-        if (!shelf.getUserId().equals(userId)) {
-            throw new ForbiddenException("You don't own this shelf");
-        }
+        Shelf shelf = shelfService.getShelfById(shelfId, userId);
 
         ShelfBook shelfBook = new ShelfBook();
         shelfBook.setShelfId(shelfId);
@@ -32,8 +30,13 @@ public class ShelfBookService {
         return shelfBookRepository.findByShelfId(shelfId);
     }
 
-    public void removeBookFromShelf(Long shelfId, Long bookId) {
-        shelfBookRepository.deleteByShelfIdAndBookId(shelfId, bookId);
+    @Transactional
+    public void removeBookFromShelf(Long shelfId, Long bookId, Long userId) {
+        Shelf shelf = shelfService.getShelfForEdit(shelfId, userId);
+
+        ShelfBook link = shelfBookRepository.findByShelfIdAndBookId(shelfId, bookId)
+                .orElseThrow(() -> new RuntimeException("Запись shelf-book не найдена"));
+        shelfBookRepository.delete(link);
     }
 }
 
