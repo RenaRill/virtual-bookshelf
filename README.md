@@ -9,11 +9,12 @@
 
 ```
 virtual-shelf/
-├── gateway/                  # Spring Cloud Gateway (роутинг, JWT, CORS)
-├── user-service/             # Микросервис пользователей
-├── book-service/             # Микросервис книг
-├── shelf-service/            # Микросервис полок
-├── client/                   # Веб-интерфейс
+├── server/                   # Backend
+│   ├── gateway/                  # Spring Cloud Gateway (роутинг, JWT, CORS)
+│   ├── user-service/             # Микросервис пользователей
+│   ├── book-service/             # Микросервис книг
+│   └── shelf-service/            # Микросервис полок
+├── client/                   # Frontend
 ├── docker-compose.yml        # Запуск всех сервисов локально
 └── README.md                 # Описание проекта
 ```
