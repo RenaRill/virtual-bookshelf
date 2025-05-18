@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8080',
+  //baseURL: 'http://localhost:8080',
+  baseURL: 'https://gateway-6oqi.onrender.com',
 });
 
 api.interceptors.request.use(config => {
@@ -15,7 +16,6 @@ api.interceptors.request.use(config => {
 export const authAPI = {
   login: async (username, password) => {
     const response = await api.post('/auth/signin', { username, password });
-    // Ожидаем { token: "jwt" } или { error: "message" }
     if (response.data.token) {
       return response.data;
     }
@@ -24,7 +24,6 @@ export const authAPI = {
 
   register: async (userData) => {
     const response = await api.post('/auth/signup', userData);
-    // Ожидаем строку "Registration successful." или { error: "message" }
     if (typeof response.data === 'string' || response.data.error) {
       return { success: !response.data.error };
     }
