@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const api = axios.create({
   //baseURL: 'http://localhost:8080',
-  baseURL: 'https://gateway-6oqi.onrender.com',
+  baseURL: 'https://gateway-97.up.railway.app',
 });
 
 api.interceptors.request.use(config => {
