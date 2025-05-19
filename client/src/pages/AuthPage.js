@@ -17,7 +17,7 @@ export const AuthPage = ({ isRegister }) => {
     try {
       if (isRegister) {
         await authAPI.register(formData);
-        alert('Registration successful! Please login.');
+        alert('Регистрация прошла успешно!');
         navigate('/login');
       } else {
         const { token } = await authAPI.login(formData.username, formData.password);
@@ -25,7 +25,7 @@ export const AuthPage = ({ isRegister }) => {
         navigate('/books');
       }
     } catch (err) {
-      let errorMessage = 'Authentication failed';
+      let errorMessage = 'Ошибка';
 
       if (err.response) {
         errorMessage = err.response.data.error ||
@@ -35,7 +35,7 @@ export const AuthPage = ({ isRegister }) => {
         errorMessage = err.message;
       }
       setError(errorMessage);
-      console.error('Auth error:', err);
+      console.error('Ошибка:', err);
     }
   };
 
@@ -43,11 +43,11 @@ export const AuthPage = ({ isRegister }) => {
     <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '80vh' }}>
       <Card style={{ width: '400px' }}>
         <Card.Body>
-          <Card.Title>{isRegister ? 'Register' : 'Login'}</Card.Title>
+          <Card.Title>{isRegister ? 'Регистрация' : 'Вход'}</Card.Title>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
-              <Form.Label>Username</Form.Label>
+              <Form.Label>Логин</Form.Label>
               <Form.Control
                 type="text"
                 value={formData.username}
@@ -58,7 +58,7 @@ export const AuthPage = ({ isRegister }) => {
 
             {isRegister && (
               <Form.Group className="mb-3">
-                <Form.Label>Email</Form.Label>
+                <Form.Label>Почта</Form.Label>
                 <Form.Control
                   type="email"
                   value={formData.email}
@@ -69,7 +69,7 @@ export const AuthPage = ({ isRegister }) => {
             )}
 
             <Form.Group className="mb-3">
-              <Form.Label>Password</Form.Label>
+              <Form.Label>Пароль</Form.Label>
               <Form.Control
                 type="password"
                 value={formData.password}
@@ -79,14 +79,14 @@ export const AuthPage = ({ isRegister }) => {
             </Form.Group>
 
             <Button variant="primary" type="submit" className="w-100">
-              {isRegister ? 'Register' : 'Login'}
+              {isRegister ? 'Зарегистрироваться' : 'Войти'}
             </Button>
           </Form>
           <div className="mt-3 text-center">
             {isRegister ? (
-              <span>Already have an account? <Link to="/login">Login</Link></span>
+              <span>Уже зарегистрированы? <Link to="/login">Войти</Link></span>
             ) : (
-              <span>Need an account? <Link to="/register">Register</Link></span>
+              <span>Ещё не зарегистрированы? <Link to="/register">Регистрация</Link></span>
             )}
           </div>
         </Card.Body>
